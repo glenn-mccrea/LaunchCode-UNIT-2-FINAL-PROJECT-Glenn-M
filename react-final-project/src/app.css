@@ -1,0 +1,25 @@
+#app-main-container-div {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  text-wrap-mode: nowrap;
+}
+
+.button-div {
+  background-color: #000;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0.75rem 1.2rem;
+  text-align: center;
+  width: auto;
+  margin: 10px;
+  box-shadow: 2px 2px 5px #444;
+}

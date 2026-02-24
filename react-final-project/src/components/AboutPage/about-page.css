@@ -1,0 +1,47 @@
+#aboutpage-div {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#aboutpage-text-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0.75rem;
+  min-height: auto;
+  padding: 5%;
+}
+#aboutpage-text-container h2 {
+  font-size: 2rem;
+}
+
+img {
+  width: 300px;
+  border-radius: 0.75rem;
+}
+
+table {
+  text-align: left;
+  border: #777 2px solid;
+}
+
+td {
+  padding-right: 115px;
+  border: #444 2px solid;
+}
+
+#contact-button {
+  font-size: 0.9rem;
+}

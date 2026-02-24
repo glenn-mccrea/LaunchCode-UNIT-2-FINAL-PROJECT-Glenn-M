@@ -1,0 +1,27 @@
+#homepage-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#homepage-text-container {
+  color: white;
+  margin: 5%;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0.75rem;
+  padding: 5%;
+}
+
+#homepage-text-container p {
+  color: white;
+}
+
+#homepage-text-container h2 {
+  font-size: 2rem;
+}

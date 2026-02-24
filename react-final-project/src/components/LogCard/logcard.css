@@ -1,0 +1,99 @@
+.main-card-div {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  min-width: 300px;
+  width: 100%;
+  max-width: 700px;
+  border: #222 2px solid;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 20px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+}
+
+.card-grid-container > div {
+  background-color: #999;
+  padding: 5px;
+  border-top: 5px solid #777;
+}
+
+#notes-container-div {
+  background-color: #ccc;
+}
+
+#subject-container-div {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#activity-duration-container-div {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#materials-container-div {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+#notes-container-div {
+  grid-column: 2;
+  grid-row: 1 / 4;
+}
+
+#notes-list-item {
+  height: auto;
+}
+
+.expand-notes-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .card-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  #subject-container-div {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #activity-duration-container-div {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #materials-container-div {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  #notes-container-div {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}
+
+#delete-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  min-width: 300px;
+  height: 50px;
+  background-color: #591e1e;
+  cursor: pointer;
+  border-top: black 2px solid;
+}

@@ -1,0 +1,111 @@
+header {
+  background-color: #0f2d2e;
+  text-align: center;
+  width: 100%;
+}
+
+#header-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#header-nav {
+  background-color: #29797a;
+  font-size: 1.5rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: solid #000 5px;
+}
+
+#header-nav-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+#mobile-menu {
+  display: none;
+}
+
+#dropdown-menu-items {
+  opacity: 0;
+  visibility: hidden; /* visibiliyu here. cannot use display: none with the transition */
+  transition: opacity 1000ms, visibility 1000ms;
+}
+
+#logo-image {
+  height: 48px;
+  width: 48px;
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  header {
+    height: min-content;
+  }
+
+  #expanded-menu-items {
+    display: none;
+  }
+
+  #mobile-menu {
+    display: block;
+    background-color: #000;
+    color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  #dropdown-menu-items {
+    display: flex; /* when using opacity, can't use display none. has to be visibility that changes */
+    position: absolute;
+    top: 100%;
+    flex-direction: column;
+    background-color: #29797a;
+    padding: 10px 0;
+    z-index: 10; /* keep on top */
+    opacity: 0; /* invisible */
+    visibility: hidden; /* hidden */
+    transition: opacity 1000ms, visibility 1000ms; /* timing for the change*/
+  }
+
+  #header-nav-button-container:hover #dropdown-menu-items {
+    opacity: 1; /* fade in */
+    visibility: visible; /* make visible */
+  }
+
+  #mobile-menu:hover {
+    background-color: #555;
+  }
+
+  #header-nav {
+    background-color: #29797a;
+    font-size: 1rem;
+    color: black;
+    padding: 1px;
+    align-items: center;
+  }
+
+  #header-nav-button-container {
+    padding-bottom: 0px;
+    min-width: 88px;
+  }
+
+  h1 {
+    display: none;
+  }
+
+  img {
+    padding: 20px;
+    display: flex;
+  }
+}
