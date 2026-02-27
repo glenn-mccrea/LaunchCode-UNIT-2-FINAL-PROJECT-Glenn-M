@@ -14,19 +14,19 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-    // GET all logs → React fetches these to display LogCards
+    // GET all logs
     @GetMapping
     public List<Log> getAllLogs() {
         return logService.getAllLogs();
     }
 
-    // POST a new log → React sends form data here
+    // POST a new log
     @PostMapping
     public Log createLog(@RequestBody Log log) {
         return logService.createLog(log);
     }
 
-    // PUT update an existing log → React sends edited data here
+    // PUT update an existing log
     @PutMapping("/{id}")
     public Log updateLog(@PathVariable Long id, @RequestBody Log updatedLog) {
         return logService.updateLog(id, updatedLog);

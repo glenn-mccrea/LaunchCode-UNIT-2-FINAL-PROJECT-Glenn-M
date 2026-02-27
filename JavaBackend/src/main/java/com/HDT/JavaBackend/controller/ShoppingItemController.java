@@ -14,19 +14,19 @@ public class ShoppingItemController {
     @Autowired
     private ShoppingItemService shoppingItemService;
 
-    // GET all shopping items → displays in table
+    // GET all shopping items show in table
     @GetMapping
     public List<ShoppingItem> getAllItems() {
         return shoppingItemService.getAllItems();
     }
 
-    // POST a new item → React sends item + quantity here
+    // POST a new item
     @PostMapping
     public ShoppingItem createItem(@RequestBody ShoppingItem item) {
         return shoppingItemService.createItem(item);
     }
 
-    // DELETE an item → triggered by delete button in table row
+    // DELETE an item
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id) {
         shoppingItemService.deleteItem(id);
