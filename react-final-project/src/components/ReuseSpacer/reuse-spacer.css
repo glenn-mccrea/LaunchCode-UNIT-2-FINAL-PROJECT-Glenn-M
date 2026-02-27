@@ -1,0 +1,5 @@
+.reuse-spacer {
+  display: block;
+  height: 1.5rem; /* or whatever spacing you need */
+  width: 100%;
+}
