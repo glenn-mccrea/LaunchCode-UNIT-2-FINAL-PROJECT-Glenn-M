@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage/HomePage";
 import LoadingPage from "./components/LoadingPage/LoadingPage";
 import LogPage from "./components/LogPage/LogPage";
 import ViewerPage from "./components/ViewerPage/ViewerPage";
+import ReuseSpacer from "./components/ReuseSpacer/ReuseSpacer";
 import { useState } from "react";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
+      <ReuseSpacer />
     </div>
   );
 }
