@@ -14,13 +14,13 @@ public class SubjectController {
     @Autowired
     private SubjectService subjectService;
 
-    // GET all subjects → used to populate subject dropdown in LogPage
+    // GET all subjects
     @GetMapping
     public List<Subject> getAllSubjects() {
         return subjectService.getAllSubjects();
     }
 
-    // POST a new subject
+    // POST a new subject -- theoretically not needed because the subjects are hard coded in the front end.
     @PostMapping
     public Subject createSubject(@RequestBody Subject subject) {
         return subjectService.createSubject(subject);
