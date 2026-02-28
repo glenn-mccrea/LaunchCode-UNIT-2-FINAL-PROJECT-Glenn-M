@@ -8,12 +8,32 @@ import LoadingPage from "./components/LoadingPage/LoadingPage";
 import LogPage from "./components/LogPage/LogPage";
 import ViewerPage from "./components/ViewerPage/ViewerPage";
 import ReuseSpacer from "./components/ReuseSpacer/ReuseSpacer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const API_URL = "http://localhost:8080";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [cards, setCards] = useState(
-    []
+    [],
   ); /* array that holds the cards. starts empty */
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/logs`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Could not reach the server.");
+        return res.json();
+      })
+      .then((data) => {
+        setCards(data); // ← fills cards from database
+        setLoading(false); // ← hides loading page
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
   const addCard = (cardData) => {
     setCards([
@@ -24,9 +44,13 @@ function App() {
 
   const deleteCard = (cardId) => {
     setCards(
-      cards.filter((obj) => obj.id !== cardId)
+      cards.filter((obj) => obj.id !== cardId),
     ); /* Keeping all the cards except for the one we don't want. */
   };
+
+  if (loading) return <LoadingPage />;
+  if (error)
+    return <p style={{ color: "white", padding: "2rem" }}>Error: {error}</p>;
 
   return (
     <div id="app-main-container-div">
