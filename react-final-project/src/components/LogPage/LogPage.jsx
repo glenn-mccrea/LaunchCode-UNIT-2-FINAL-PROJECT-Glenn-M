@@ -46,26 +46,21 @@ const LogPage = ({ addCard }) => {
             <label htmlFor="school-subject">Subject: </label>
             <br />
             <select
-              required /*Used for form validation */
+              required
               id="school-subject"
               name="school-subject"
               value={subject}
-              onChange={
-                (e) =>
-                  setSubject(
-                    e.target.value,
-                  ) /* this means grab the value of what the user selected */
-              }
+              onChange={(e) => setSubject(e.target.value)}
             >
               <option value="">Choose a subject</option>
-              <option value="English">English/Language Arts</option>
-              <option value="Math">Mathematics</option>
-              <option value="Science">Science</option>
-              <option value="Social-Studies">Social Studies/History</option>
-              <option value="Foreign-Language">Foreign Language</option>
-              <option value="Art">Art</option>
-              <option value="Music">Music</option>
-              <option value="Computer-Science">Computer Science</option>
+              <option value="3">English/Language Arts</option>{" "}
+              <option value="4">Mathematics</option>
+              <option value="5">Science</option>
+              <option value="6">Social Studies/History</option>{" "}
+              <option value="7">Foreign Language</option>
+              <option value="8">Art</option>
+              <option value="9">Music</option>
+              <option value="10">Computer Science</option>
             </select>
             <br />
             <br />
