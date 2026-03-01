@@ -8,6 +8,7 @@ import LoadingPage from "./components/LoadingPage/LoadingPage";
 import LogPage from "./components/LogPage/LogPage";
 import ViewerPage from "./components/ViewerPage/ViewerPage";
 import ReuseSpacer from "./components/ReuseSpacer/ReuseSpacer";
+import ShoppingPage from "./components/ShoppingPage/ShoppingPage";
 import { useEffect, useState } from "react";
 
 const API_URL = "http://localhost:8080";
@@ -15,6 +16,7 @@ const API_URL = "http://localhost:8080";
 function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [shoppingItems, setShoppingItems] = useState([]);
   const [cards, setCards] = useState(
     [],
   ); /* array that holds the cards. starts empty */
@@ -73,6 +75,31 @@ function App() {
       setCards(cards.map((card) => (card.id === id ? updatedCard : card)));
     } catch (err) {
       alert("Could not update log. Please try again.");
+    }
+  };
+
+  // Fetch shopping items on startup
+  useEffect(() => {
+    fetch(`${API_URL}/api/shopping`)
+      .then((res) => res.json())
+      .then((data) => setShoppingItems(data))
+      .catch((err) => console.error("Shopping fetch failed:", err));
+  }, []);
+
+  // Add and delete
+  const addShoppingItem = (itemData) => {
+    setShoppingItems([...shoppingItems, itemData]);
+  };
+
+  const deleteShoppingItem = async (itemId) => {
+    try {
+      const response = await fetch(`${API_URL}/api/shopping/${itemId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) throw new Error("Delete failed.");
+      setShoppingItems(shoppingItems.filter((obj) => obj.id !== itemId));
+    } catch (err) {
+      alert("Could not delete that item. Please try again.");
     }
   };
 
