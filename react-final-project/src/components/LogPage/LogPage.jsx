@@ -15,26 +15,42 @@ const LogPage = ({ addCard }) => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    setLoading(true); // disable button while waiting
-    setError(null); // clear previous errors
+    setLoading(true);
+    setError(null);
 
     const newCard = {
-      id: Date.now(),
-      subject: subject,
       duration: duration,
       materials: materials,
       notes: notes,
+      subject: { id: parseInt(subject) }, // ← parseInt converts "4" string to 4 number
     };
 
-    addCard(newCard); /* Passes the object up to my app.jsx --  */
+    try {
+      const response = await fetch("http://localhost:8080/api/logs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, // tell Spring JSON
+        body: JSON.stringify(newCard), // convert JS object to JSON string
+      });
 
-    /* reset values: */
-    setSubject("");
-    setDuration("15");
-    setMaterials("");
-    setNotes("");
+      if (!response.ok)
+        throw new Error("Failed to save log. Please try again.");
 
-    navigate("/viewer");
+      const savedCard = await response.json(); // returns the saved object with real id
+
+      addCard(savedCard); // pass card up to App.jsx
+
+      // reset form values
+      setSubject("");
+      setDuration("15");
+      setMaterials("");
+      setNotes("");
+
+      navigate("/viewer");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false); //  re-enable button for submitwhen done
+    }
   };
 
   return (
