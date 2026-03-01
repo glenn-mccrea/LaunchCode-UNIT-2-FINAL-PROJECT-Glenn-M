@@ -57,6 +57,25 @@ function App() {
     }
   };
 
+  const updateCard = async (id, updatedData) => {
+    try {
+      const response = await fetch(`${API_URL}/api/logs/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" }, // ← tell Spring we're sending JSON
+        body: JSON.stringify(updatedData), // ← convert JS object to JSON string
+      });
+
+      if (!response.ok) throw new Error("Update failed.");
+
+      const updatedCard = await response.json();
+
+      // Find the old card by id and replace it with the updated version
+      setCards(cards.map((card) => (card.id === id ? updatedCard : card)));
+    } catch (err) {
+      alert("Could not update log. Please try again.");
+    }
+  };
+
   if (loading) return <LoadingPage />;
   if (error)
     return <p style={{ color: "white", padding: "2rem" }}>Error: {error}</p>;
@@ -71,7 +90,13 @@ function App() {
         {/* Passing down 'addCard' as a prop. */}
         <Route
           path="/viewer"
-          element={<ViewerPage cards={cards} deleteCard={deleteCard} />}
+          element={
+            <ViewerPage
+              cards={cards}
+              deleteCard={deleteCard}
+              updateCard={updateCard}
+            />
+          }
         />
         {/* Passing down cards as a prop. */}
         <Route path="/loading" element={<LoadingPage />} />
