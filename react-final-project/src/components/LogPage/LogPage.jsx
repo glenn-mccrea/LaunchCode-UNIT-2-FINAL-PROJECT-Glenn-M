@@ -41,6 +41,7 @@ const LogPage = ({ addCard }) => {
     <main>
       <div id="logpage-div">
         <div id="form-container">
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <form onSubmit={handleSubmit}>
             <label htmlFor="school-subject">Subject: </label>
             <br />
