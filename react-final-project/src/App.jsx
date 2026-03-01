@@ -127,6 +127,16 @@ function App() {
         />
         {/* Passing down cards as a prop. */}
         <Route path="/loading" element={<LoadingPage />} />
+        <Route
+          path="/shopping"
+          element={
+            <ShoppingPage
+              items={shoppingItems}
+              addItem={addShoppingItem}
+              deleteItem={deleteShoppingItem}
+            />
+          }
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />
