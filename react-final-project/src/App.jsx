@@ -38,10 +38,7 @@ function App() {
   }, []);
 
   const addCard = (cardData) => {
-    setCards([
-      ...cards,
-      cardData,
-    ]); /* Function to place new object into the cards array at the end. */
+    setCards([...cards, cardData]);
   };
 
   const deleteCard = async (cardId) => {
@@ -63,8 +60,8 @@ function App() {
     try {
       const response = await fetch(`${API_URL}/api/logs/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" }, // ← tell Spring we're sending JSON
-        body: JSON.stringify(updatedData), // ← convert JS object to JSON string
+        headers: { "Content-Type": "application/json" }, // tell Spring we're sending JSON
+        body: JSON.stringify(updatedData), // convert JS object to JSON string
       });
 
       if (!response.ok) throw new Error("Update failed.");
