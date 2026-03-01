@@ -122,7 +122,7 @@ const LogPage = ({ addCard }) => {
             />
             <p>
               <button type="submit" className="button-div" disabled={loading}>
-                {loading ? "Saving..." : "Submit Log"} // depending on if it is
+                {loading ? "Saving..." : "Submit Log"}
                 loading.
               </button>
             </p>
