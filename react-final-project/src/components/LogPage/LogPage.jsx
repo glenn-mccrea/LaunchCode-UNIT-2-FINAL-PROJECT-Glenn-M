@@ -10,9 +10,13 @@ const LogPage = ({ addCard }) => {
   const [notes, setNotes] = useState("");
 
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // false because form isn't submitting yet
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
+    setLoading(true); // disable button while waiting
+    setError(null); // clear previous errors
 
     const newCard = {
       id: Date.now(),
@@ -48,7 +52,7 @@ const LogPage = ({ addCard }) => {
               onChange={
                 (e) =>
                   setSubject(
-                    e.target.value
+                    e.target.value,
                   ) /* this means grab the value of what the user selected */
               }
             >
@@ -105,8 +109,9 @@ const LogPage = ({ addCard }) => {
               onChange={(e) => setNotes(e.target.value)}
             />
             <p>
-              <button type="submit" className="button-div">
-                Submit Log
+              <button type="submit" className="button-div" disabled={loading}>
+                {loading ? "Saving..." : "Submit Log"} // depending on if it is
+                loading.
               </button>
             </p>
           </form>
