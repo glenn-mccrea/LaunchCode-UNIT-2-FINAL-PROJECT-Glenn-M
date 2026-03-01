@@ -42,10 +42,19 @@ function App() {
     ]); /* Function to place new object into the cards array at the end. */
   };
 
-  const deleteCard = (cardId) => {
-    setCards(
-      cards.filter((obj) => obj.id !== cardId),
-    ); /* Keeping all the cards except for the one we don't want. */
+  const deleteCard = async (cardId) => {
+    try {
+      const response = await fetch(`${API_URL}/api/logs/${cardId}`, {
+        method: "DELETE", // tell Spring to delete, not just read
+      });
+
+      if (!response.ok) throw new Error("Delete failed.");
+
+      // remove from screen AFTER database confirms gone
+      setCards(cards.filter((obj) => obj.id !== cardId));
+    } catch (err) {
+      alert("Could not delete log. Please try again.");
+    }
   };
 
   if (loading) return <LoadingPage />;
