@@ -10,57 +10,73 @@ const LogPage = ({ addCard }) => {
   const [notes, setNotes] = useState("");
 
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // false because form isn't submitting yet
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
+    setLoading(true);
+    setError(null);
 
     const newCard = {
-      id: Date.now(),
-      subject: subject,
       duration: duration,
       materials: materials,
       notes: notes,
+      subject: { id: parseInt(subject) }, // ← parseInt converts "4" string to 4 number
     };
 
-    addCard(newCard); /* Passes the object up to my app.jsx --  */
+    try {
+      const response = await fetch("http://localhost:8080/api/logs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }, // tell Spring JSON
+        body: JSON.stringify(newCard), // convert JS object to JSON string
+      });
 
-    /* reset values: */
-    setSubject("");
-    setDuration("15");
-    setMaterials("");
-    setNotes("");
+      if (!response.ok)
+        throw new Error("Failed to save log. Please try again.");
 
-    navigate("/viewer");
+      const savedCard = await response.json(); // returns the saved object with real id
+
+      addCard(savedCard); // pass card up to App.jsx
+
+      // reset form values
+      setSubject("");
+      setDuration("15");
+      setMaterials("");
+      setNotes("");
+
+      navigate("/viewer");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false); //  re-enable button for submitwhen done
+    }
   };
 
   return (
     <main>
       <div id="logpage-div">
         <div id="form-container">
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <form onSubmit={handleSubmit}>
             <label htmlFor="school-subject">Subject: </label>
             <br />
             <select
-              required /*Used for form validation */
+              required
               id="school-subject"
               name="school-subject"
               value={subject}
-              onChange={
-                (e) =>
-                  setSubject(
-                    e.target.value
-                  ) /* this means grab the value of what the user selected */
-              }
+              onChange={(e) => setSubject(e.target.value)}
             >
               <option value="">Choose a subject</option>
-              <option value="English">English/Language Arts</option>
-              <option value="Math">Mathematics</option>
-              <option value="Science">Science</option>
-              <option value="Social-Studies">Social Studies/History</option>
-              <option value="Foreign-Language">Foreign Language</option>
-              <option value="Art">Art</option>
-              <option value="Music">Music</option>
-              <option value="Computer-Science">Computer Science</option>
+              <option value="3">English/Language Arts</option>{" "}
+              <option value="4">Mathematics</option>
+              <option value="5">Science</option>
+              <option value="6">Social Studies/History</option>{" "}
+              <option value="7">Foreign Language</option>
+              <option value="8">Art</option>
+              <option value="9">Music</option>
+              <option value="10">Computer Science</option>
             </select>
             <br />
             <br />
@@ -105,8 +121,8 @@ const LogPage = ({ addCard }) => {
               onChange={(e) => setNotes(e.target.value)}
             />
             <p>
-              <button type="submit" className="button-div">
-                Submit Log
+              <button type="submit" className="button-div" disabled={loading}>
+                {loading ? "Saving..." : "Submit Log"}
               </button>
             </p>
           </form>
