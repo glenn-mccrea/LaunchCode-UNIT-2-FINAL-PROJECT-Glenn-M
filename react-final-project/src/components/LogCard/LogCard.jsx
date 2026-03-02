@@ -8,7 +8,7 @@ const LogCard = ({ id, subject, duration, materials, notes, deleteCard }) => {
       <div className="card-grid-container">
         <div id="subject-container-div">
           <p>Subject:</p>
-          <p id="subject-list-item">{subject}</p>
+          <p id="subject-list-item">{subject.name}</p>
         </div>
         <div id="activity-duration-container-div">
           <p>Activity duration:</p>
