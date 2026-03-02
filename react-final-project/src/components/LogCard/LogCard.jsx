@@ -1,8 +1,19 @@
 import React from "react";
 import "./logcard.css";
 import ReuseButton from "../ReuseButton/ReuseButton";
+import { useState } from "react";
 
-const LogCard = ({ id, subject, duration, materials, notes, deleteCard }) => {
+const LogCard = ({
+  id,
+  subject,
+  duration,
+  materials,
+  notes,
+  deleteCard,
+  updateCard,
+}) => {
+  const [isEditing, setIsEditing] = useState(false); // false = show normal card
+
   return (
     <div className="main-card-div">
       <div className="card-grid-container">
@@ -23,6 +34,13 @@ const LogCard = ({ id, subject, duration, materials, notes, deleteCard }) => {
           <p id="notes-list-item">{notes}</p>
         </div>
       </div>
+
+      {/* edit button */}
+      <ReuseButton
+        idName={"edit-button"}
+        text={"Edit Activity"}
+        onClick={() => setIsEditing(true)} // card to edit mode
+      />
       <ReuseButton
         idName={"delete-button"}
         text={"Delete Activity"}
