@@ -1,0 +1,15 @@
+#no-cards-page-main-div p {
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+#no-cards-page-main-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border-radius: 0.75rem;
+  margin: 5%;
+  height: 50%;
+}
