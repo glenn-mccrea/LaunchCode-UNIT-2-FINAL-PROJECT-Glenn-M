@@ -6,7 +6,6 @@
   flex: 1;
   align-items: center;
   justify-content: center;
-  height: 100%;
 }
 
 form {
@@ -15,7 +14,6 @@ form {
   color: white;
   border-radius: 0.75rem;
   min-width: 275px;
-  height: 100%;
   width: 50%;
 }
 

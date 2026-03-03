@@ -1,0 +1,101 @@
+#shopping-page-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #292929;
+  height: 100%;
+  padding: 5%;
+}
+
+form {
+  padding-bottom: 0px;
+}
+
+#shopping-page-div h2 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+#shopping-page-div > p {
+  color: red;
+}
+
+#shopping-container {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 0.75rem;
+  padding: 5%;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+  margin-bottom: 10rem;
+}
+
+#shopping-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#shopping-table thead {
+  background-color: #000;
+  color: white;
+}
+
+#shopping-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+#shopping-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #29797a;
+  color: white;
+}
+
+#shopping-table tbody tr:nth-child(odd) {
+  background-color: rgba(41, 121, 122, 0.3);
+}
+
+#shopping-table tbody tr:nth-child(even) {
+  background-color: rgba(15, 45, 46, 0.5);
+}
+
+#shopping-table tbody tr:hover {
+  background-color: #222;
+}
+
+@media (max-width: 480px) {
+  #shopping-page-div {
+    padding: 3%;
+    gap: 1rem;
+  }
+
+  #shopping-page-div h2 {
+    font-size: 1.5rem;
+  }
+
+  #shopping-container {
+    padding: 4%;
+  }
+
+  #shopping-container label {
+    font-size: 0.9rem;
+  }
+
+  #shopping-container input {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  #shopping-table {
+    font-size: 0.85rem;
+  }
+
+  .button-div {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
