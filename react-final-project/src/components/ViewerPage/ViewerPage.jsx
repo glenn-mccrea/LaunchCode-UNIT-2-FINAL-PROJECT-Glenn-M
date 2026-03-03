@@ -9,7 +9,7 @@ const ViewerPage = ({ cards, deleteCard }) => {
 
   {
     if (cards.length === 0) {
-      /* if no cards (logs) have been added, the loading page appears */
+      /* if no cards (logs) have been added, the NoCardsPage page appears */
       return <NoCardsPage />;
     }
 
