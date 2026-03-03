@@ -24,6 +24,9 @@ const Header = () => {
             <Link to="/viewer" className="button-div">
               Log Viewer
             </Link>
+            <Link to="/shopping" className="button-div">
+              Annual Shopping List
+            </Link>
           </div>
           <div id="expanded-menu-items">
             <Link to="/home" className="button-div">
@@ -34,6 +37,9 @@ const Header = () => {
             </Link>
             <Link to="/viewer" className="button-div">
               Log Viewer
+            </Link>
+            <Link to="/shopping" className="button-div">
+              Annual Shopping List
             </Link>
           </div>
         </nav>
