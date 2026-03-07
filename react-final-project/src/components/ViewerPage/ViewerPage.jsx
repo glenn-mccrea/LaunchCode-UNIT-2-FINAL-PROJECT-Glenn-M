@@ -3,7 +3,7 @@ import "./viewer-page.css";
 import LogCard from "../LogCard/LogCard";
 import NoCardsPage from "../NoCardsPage/NoCardsPage";
 
-const ViewerPage = ({ cards, deleteCard }) => {
+const ViewerPage = ({ cards, deleteCard, updateCard }) => {
   /* Receives the card that is pulled from app.jsx */
   /* conditional rendering below */
 
@@ -16,25 +16,22 @@ const ViewerPage = ({ cards, deleteCard }) => {
     return (
       <main>
         <div id="viewer-page-div">
-          {/* Below: map loops through the array as many times as there are contents. Everytime it does run, it pulls out the data and places it onto a LogCard. */}
-          {cards
-            .map((card) => (
-              <LogCard
-                key={card.id}
-                id={
-                  card.id
-                } /*{Need this for my delete function because react "consumes" the key} */
-                subject={card.subject}
-                duration={card.duration}
-                materials={card.materials}
-                notes={card.notes}
-                deleteCard={deleteCard} /*Pass down the function*/
-              />
-            ))
-            .reverse()}
+          {[...cards].reverse().map((card) => (
+            <LogCard
+              key={card.id}
+              id={card.id} /* Need id separately — React consumes key */
+              subject={card.subject}
+              duration={card.duration}
+              materials={card.materials}
+              notes={card.notes}
+              deleteCard={deleteCard}
+              updateCard={updateCard}
+            />
+          ))}
         </div>
       </main>
     );
   }
 };
+
 export default ViewerPage;
