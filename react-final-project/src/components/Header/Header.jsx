@@ -15,7 +15,7 @@ const Header = () => {
         <nav id="header-nav-button-container">
           <ReuseButton idName={"mobile-menu"} text={"Menu"} />
           <div id="dropdown-menu-items">
-            <Link to="/home" className="button-div">
+            <Link to="/" className="button-div">
               Home
             </Link>
             <Link to="/log" className="button-div">
@@ -29,7 +29,7 @@ const Header = () => {
             </Link>
           </div>
           <div id="expanded-menu-items">
-            <Link to="/home" className="button-div">
+            <Link to="/" className="button-div">
               Home
             </Link>
             <Link to="/log" className="button-div">
