@@ -20,6 +20,7 @@ function App() {
   const [cards, setCards] = useState(
     [],
   ); /* array that holds the cards. starts empty */
+  const [appError, setAppError] = useState(null);
 
   useEffect(() => {
     fetch(`${API_URL}/api/logs`)
@@ -52,7 +53,7 @@ function App() {
       // remove from screen AFTER database confirms gone
       setCards(cards.filter((obj) => obj.id !== cardId));
     } catch (err) {
-      alert("Could not delete log. Please try again.");
+      setAppError(err.message);
     }
   };
 
@@ -71,7 +72,7 @@ function App() {
       // Find the old card by id and replace it with the updated version
       setCards(cards.map((card) => (card.id === id ? updatedCard : card)));
     } catch (err) {
-      alert("Could not update log. Please try again.");
+      setAppError(err.message);
     }
   };
 
@@ -96,7 +97,7 @@ function App() {
       if (!response.ok) throw new Error("Delete failed.");
       setShoppingItems(shoppingItems.filter((obj) => obj.id !== itemId));
     } catch (err) {
-      alert("Could not delete that item. Please try again.");
+      setAppError(err.message);
     }
   };
 
@@ -107,6 +108,12 @@ function App() {
   return (
     <div id="app-main-container-div">
       <Header />
+      {appError && (
+        <div id="app-error-banner">
+          <p>{appError}</p>
+          <button onClick={() => setAppError(null)}>✕</button>
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
