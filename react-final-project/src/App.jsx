@@ -108,6 +108,12 @@ function App() {
   return (
     <div id="app-main-container-div">
       <Header />
+      {appError && (
+        <div id="app-error-banner">
+          <p>{appError}</p>
+          <button onClick={() => setAppError(null)}>✕</button>
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
