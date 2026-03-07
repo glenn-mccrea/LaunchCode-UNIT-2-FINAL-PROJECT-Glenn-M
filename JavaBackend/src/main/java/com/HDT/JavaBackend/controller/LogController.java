@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/logs")
-@CrossOrigin(origins = "http://localhost:5173")
 public class LogController {
 
     @Autowired
