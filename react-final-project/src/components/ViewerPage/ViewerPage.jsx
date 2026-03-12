@@ -13,9 +13,22 @@ const ViewerPage = ({ cards, deleteCard, updateCard }) => {
       return <NoCardsPage />;
     }
 
+    // Add up all duration values across every card
+    const totalMinutes = cards.reduce(
+      (sum, card) => sum + parseInt(card.duration),
+      0,
+    );
+
     return (
       <main>
         <div id="viewer-page-div">
+          {/* Total learning time summary box — only shows if cards exist */}
+          <div id="total-time-box">
+            <p>
+              Total Learning Time: <strong>{totalMinutes} minutes</strong>
+            </p>
+          </div>
+
           {[...cards].reverse().map((card) => (
             <LogCard
               key={card.id}
