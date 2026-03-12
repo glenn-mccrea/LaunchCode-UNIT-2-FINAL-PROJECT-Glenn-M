@@ -2,6 +2,7 @@ import React from "react";
 import "./viewer-page.css";
 import LogCard from "../LogCard/LogCard";
 import NoCardsPage from "../NoCardsPage/NoCardsPage";
+import ReuseSpacer from "../ReuseSpacer/ReuseSpacer";
 
 const ViewerPage = ({ cards, deleteCard, updateCard }) => {
   /* Receives the card that is pulled from app.jsx */
@@ -22,6 +23,7 @@ const ViewerPage = ({ cards, deleteCard, updateCard }) => {
     return (
       <main>
         <div id="viewer-page-div">
+          <ReuseSpacer />
           {/* Total learning time summary box — only shows if cards exist */}
           <div id="total-time-box">
             <p>
