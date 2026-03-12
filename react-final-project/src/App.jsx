@@ -145,8 +145,8 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer />
       <ReuseSpacer />
+      <Footer />
     </div>
   );
 }
