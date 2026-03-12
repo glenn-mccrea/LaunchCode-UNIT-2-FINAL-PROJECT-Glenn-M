@@ -81,7 +81,7 @@ function App() {
     fetch(`${API_URL}/api/shopping`)
       .then((res) => res.json())
       .then((data) => setShoppingItems(data))
-      .catch((err) =>
+      .catch(() =>
         setAppError("Could not load shopping items. Please try again."),
       );
   }, []);
