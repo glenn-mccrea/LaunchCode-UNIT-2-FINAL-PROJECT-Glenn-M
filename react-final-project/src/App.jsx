@@ -120,7 +120,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/log" element={<LogPage addCard={addCard} />} />
-        {/* Passing down 'addCard' as a prop. */}
+        {/* LogPage — receives addCard to POST new entries */}
         <Route
           path="/viewer"
           element={
@@ -131,7 +131,7 @@ function App() {
             />
           }
         />
-        {/* Passing down cards as a prop. */}
+        {/* ViewerPage — receives cards, deleteCard, and updateCard */}
         <Route path="/loading" element={<LoadingPage />} />
         <Route
           path="/shopping"
