@@ -76,7 +76,7 @@ const ShoppingPage = ({ items, addItem, deleteItem }) => {
         {/* this is the table*/}
         {items.length === 0 ? (
           // if no items exist yet
-          <p>No items exist!</p>
+          <p>No items currently exist. Add new Items above.</p>
         ) : (
           <table id="shopping-table">
             <thead>
