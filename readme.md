@@ -160,12 +160,7 @@ Open your browser to `http://localhost:5173`.
 
 ## 🗂️ Entity Relationship Diagram
 
-> _Add your ERD screenshot or link here._
-
-<!-- Example:
-![ERD](images/erd.png)
-or link to LucidChart / dbdiagram.io
--->
+> https://docs.google.com/presentation/d/1OWiPCSto8GxxzyrffBUMqHF-eCkJz5rboWMVITEk60o/edit?usp=sharing
 
 The database has three tables:
 
@@ -177,7 +172,7 @@ The database has three tables:
 
 ## 🖼️ Wireframes
 
-> _Add your wireframe screenshot or link here._
+> https://docs.google.com/presentation/d/16dxMJZI_fHYxBrNA93RjR6Qxwi0W7--bljBWYkvnEjs/edit?usp=sharing
 
 <!-- Example:
 ![Wireframe](images/wireframe.png)
