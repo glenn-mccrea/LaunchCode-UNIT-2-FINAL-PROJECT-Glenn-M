@@ -5,7 +5,7 @@
 ![React](https://img.shields.io/badge/React-Vite-blue?style=flat-square)
 ![MySQL](https://img.shields.io/badge/MySQL-8.4.8-lightblue?style=flat-square)
 
-A full-stack web application for homeschool teachers to track daily learning activities. Teachers can log subjects, duration, materials, and notes for each activity, view and edit past logs, delete entries, and manage an annual school supply shopping list — with all data persisting in a MySQL database.
+A full-stack web application designed for teachers to track student learning activities and maintain compliance with U.S. state monitoring requirements. Built with React for the frontend, Java and Spring Boot for backend logic, and MySQL for persistent data storage. The App enables teachers to log subjects, duration, materials, and notes for each activity, view and edit past logs, delete entries, and manage an annual school supply shopping list.
 
 ---
 
